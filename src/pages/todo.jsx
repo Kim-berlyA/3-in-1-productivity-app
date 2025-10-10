@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import plusIcon from '../assets/plus.png';
 import ToDoItems from "../components/TodoItems";
 
@@ -31,7 +31,7 @@ export default function ToDo() {
   }
 
   return(
-    <div className='h-screen col-span-1 md:col-span-1 md:border-r md:border-gray-300 overflow-y-scroll'>
+    <div className='h-screen col-span-1 md:col-span-1 md:border-r md:border-gray-300 overflow-y-auto w-full'>
       <div className="flex flex-col justify-center items-center px-2">
         <div className="w-full">
           <div className='sticky top-0 bg-white py-3'>
