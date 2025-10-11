@@ -8,16 +8,6 @@ export default function NavBar() {
 
   const tabs = ['To-Do', 'Timer', 'Notes'];
 
-  function currentTab() {
-    if (activeTab === 'To-Do') {
-      return <Todo />;
-    } else if (activeTab === 'Timer' ){
-      return <Timer />;
-    } else {
-      return <Notes />;
-    }
-  }
-
   return (
     <div className="flex flex-col w-full items-center">
       <nav
@@ -35,7 +25,17 @@ export default function NavBar() {
         ))}
       </nav>
 
-      {currentTab()}
+      <div className="w-full">
+        <div style={{ display: activeTab === "To-Do" ? "block" : "none" }}>
+          <Todo />
+        </div>
+        <div style={{ display: activeTab === "Timer" ? "block" : "none" }}>
+          <Timer />
+        </div>
+        <div style={{ display: activeTab === "Notes" ? "block" : "none" }}>
+          <Notes />
+        </div>
+      </div>
     </div>
   )
 }

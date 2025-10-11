@@ -9,9 +9,16 @@ export default function App() {
       <div className='w-full flex md:hidden'>
         <NavBar />
       </div>
-      <ToDo />
-      <Timer />
-      <Notes />
+
+      <div className="hidden md:block">
+        <ToDo />
+      </div>
+      <div className="hidden md:block">
+        <Timer />
+      </div>
+      <div className="hidden md:block">
+        <Notes />
+      </div>
     </div>
   )
 } 
