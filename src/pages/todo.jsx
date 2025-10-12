@@ -48,7 +48,7 @@ export default function ToDo() {
   }, []);
 
   return(
-    <div className='h-screen col-span-1 md:border-r md:border-gray-300 overflow-y-auto w-fullflex flex-col justify-center items-center px-2'>
+    <div className='h-screen col-span-1 md:border-r md:border-gray-300 overflow-y-auto w-full flex px-2'>
       <div className="w-full">
         <div className='sticky top-0 bg-white py-3'>
           <h1 className="text-left text-2xl mt-3 font-semibold px-1">To-Do List</h1>
