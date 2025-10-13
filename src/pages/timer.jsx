@@ -68,10 +68,10 @@ export default function Timer() {
   }
 
   return (
-    <div className="h-screen flex flex-col items-center">
+    <div className="h-dvh flex flex-col items-center">
       <h1 className="hidden text-left text-2xl mt-6 font-semibold px-2 w-full md:block">Timer</h1>
 
-      <div className="h-full w-full flex flex-col items-center">
+      <div className="h-[90%] w-full flex flex-col items-center justify-center">
         <div className="size-56 border-4 border-neutral-800 rounded-full flex items-center justify-center shadow-lg mt-10">
           <span className="text-4xl md:text-3xl text-neutral-800">
             {timeLeft}
@@ -115,7 +115,7 @@ export default function Timer() {
           </div>
         </div>}
 
-        <div className="flex gap-14 mt-20">
+        <div className="flex gap-12 mt-20">
           <Button onClick={handleRestart}>
             <img src={Restart} alt="restart icon" className="size-3.5" />
           </Button>
