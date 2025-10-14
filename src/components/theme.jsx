@@ -4,7 +4,7 @@ import Dark from "../assets/dark.png";
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState(
-    localStorage.getItem("theme") || "light"
+    localStorage.getItem("theme") || "dark"
   );
 
   function handleTheme() {
