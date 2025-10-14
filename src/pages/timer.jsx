@@ -1,4 +1,5 @@
 import {useState, useEffect} from "react";
+import {getTime, saveTime} from "../utils/localStorage"
 import Button from "../components/buttons";
 import Pause from "../assets/pause.png";
 import Play from "../assets/play-button-arrowhead.png";
@@ -6,7 +7,7 @@ import Restart from "../assets/restart (1).png";
 import Stop from "../assets/stop-button.png";
 
 export default function Timer() {
-  const [secondsLeft, setSecondsLeft] = useState(1800);
+  const [secondsLeft, setSecondsLeft] = useState(getTime ? getTime : 1800);
   const [initialTime, setInitialTime] = useState(1800);
   const [isActive, setIsActive] = useState(false);
   const [time, setTime] = useState({
@@ -26,10 +27,14 @@ export default function Timer() {
     return () => clearInterval(interval);
   }, [isActive]);
 
+  useEffect(() => {
+    saveTime(secondsLeft)
+  }, [secondsLeft])
+
   const seconds = Math.floor(secondsLeft % 60);
   const minutes = Math.floor((secondsLeft / 60) % 60);
   const hours = Math.floor(secondsLeft / 3600);
-
+  
   const timeLeft = `${String(hours).padStart(2, "0")} : ${String(minutes).padStart(2, "0")} : ${String(seconds).padStart(2, "0")}`;
 
   function toggleIsActive() {
@@ -49,8 +54,10 @@ export default function Timer() {
     setSecondsLeft(0);
   }
 
-  function handleChange(e) {
-    const { name, value } = e.target;
+  function handleChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+
     let num = parseInt(value) || 0;
 
     if (name === "hours" && num > 23) num = 0;
@@ -90,7 +97,8 @@ export default function Timer() {
               name="hours"
               min={0}
               max={23}
-              value={time.hours}
+              value={time.hours === 0 ? "" : time.hours}
+              placeholder="00"
               onChange={handleChange}
               className="h-full text-center no-spin"
             />
@@ -99,7 +107,8 @@ export default function Timer() {
               name="minutes"
               min={0}
               max={59}
-              value={time.minutes}
+              value={time.minutes === 0 ? "" : time.minutes}
+              placeholder="00"
               onChange={handleChange}
               className="h-full text-center no-spin"
             />
@@ -108,7 +117,8 @@ export default function Timer() {
               name="seconds"
               min={0}
               max={59}
-              value={time.seconds}
+              value={time.seconds === 0 ? "00" : time.seconds}
+              placeholder="00"
               onChange={handleChange}
               className="h-full text-center no-spin"
             />

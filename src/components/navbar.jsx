@@ -4,7 +4,7 @@ import Timer from "../pages/timer";
 import Notes from "../pages/notes";
 
 export default function NavBar() {
-  const [activeTab, setActiveTab] = useState("Timer");
+  const [activeTab, setActiveTab] = useState("Notes");
 
   const tabs = ['To-Do', 'Timer', 'Notes'];
 
