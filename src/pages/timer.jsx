@@ -5,6 +5,7 @@ import Pause from "../assets/pause.png";
 import Play from "../assets/play-button-arrowhead.png";
 import Restart from "../assets/restart (1).png";
 import Stop from "../assets/stop-button.png";
+import AlarmSound from "../assets/alarm.mp3"
 
 export default function Timer() {
   const [secondsLeft, setSecondsLeft] = useState(getTime ? getTime : 1800);
@@ -29,7 +30,17 @@ export default function Timer() {
 
   useEffect(() => {
     saveTime(secondsLeft)
-  }, [secondsLeft])
+  }, [secondsLeft]);
+
+  const alarm = new Audio(AlarmSound);
+
+  useEffect(() => {
+    if (secondsLeft === 0 && isActive) {
+      alarm.play();
+      setIsActive(false)
+    }
+  }, [secondsLeft]);
+
 
   const seconds = Math.floor(secondsLeft % 60);
   const minutes = Math.floor((secondsLeft / 60) % 60);
@@ -117,7 +128,7 @@ export default function Timer() {
               name="seconds"
               min={0}
               max={59}
-              value={time.seconds === 0 ? "00" : time.seconds}
+              value={time.seconds === 0 ? "" : time.seconds}
               placeholder="00"
               onChange={handleChange}
               className="h-full text-center no-spin"
