@@ -5,7 +5,7 @@ import NavBar from './components/navbar';
 
 export default function App() {
   return (
-    <div className='h-screen grid grid-cols-1 md:grid-cols-3'>
+    <div className='h-screen grid grid-cols-1 md:grid-cols-3 bg-white text-black dark:bg-black dark:text-white'>
       <div className='w-full flex md:hidden'>
         <NavBar />
       </div>

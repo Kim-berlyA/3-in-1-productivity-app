@@ -1,10 +1,15 @@
 import {useState, useEffect} from "react";
-import {getTime, saveTime} from "../utils/localStorage"
+import {getTime, saveTime} from "../utils/localStorage";
+import ThemeToggle from "../components/theme";
 import Button from "../components/buttons";
-import Pause from "../assets/pause.png";
-import Play from "../assets/play-button-arrowhead.png";
-import Restart from "../assets/restart (1).png";
-import Stop from "../assets/stop-button.png";
+import PauseBlack from "../assets/pause-black.png";
+import PauseWhite from "../assets/pause-white.png";
+import PlayBlack from "../assets/play-black.png";
+import PlayWhite from "../assets/play-white.png";
+import RestartBlack from "../assets/restart-black.png";
+import RestartWhite from "../assets/restart-white.png";
+import StopBlack from "../assets/stop-black.png";
+import StopWhite from "../assets/stop-white.png";
 import AlarmSound from "../assets/alarm.mp3"
 
 export default function Timer() {
@@ -86,23 +91,26 @@ export default function Timer() {
   }
 
   return (
-    <div className="h-dvh flex flex-col items-center">
-      <h1 className="hidden text-left text-2xl mt-6 font-semibold px-2 w-full md:block">Timer</h1>
+    <div className="h-dvh flex flex-col">
+      <div className="flex justify-between items-center mt-6 w-full px-4">
+        <h1 className="text-left text-2xl font-semibold px-1">Timer</h1>
+        <span className='md:hidden'><ThemeToggle /></span>
+      </div>
 
-      <div className="h-[90%] w-full flex flex-col items-center justify-center">
-        <div className="size-56 border-4 border-neutral-800 rounded-full flex items-center justify-center shadow-lg mt-10">
-          <span className="text-4xl md:text-3xl text-neutral-800">
+      <div className="h-[90%] w-full flex flex-col items-center @container">
+        <div className="size-56 border-4 border-neutral-800 dark:border-neutral-300 rounded-full flex items-center justify-center shadow-lg dark:shadow-neutral-900 mt-[5cqh]">
+          <span className="text-4xl md:text-3xl text-neutral-800 dark:text-neutral-300">
             {timeLeft}
           </span>
         </div>
 
         {!isActive && <div className="w-full flex flex-col justify-center px-10">
-          <div className="flex justify-around border-b border-neutral-800/20 mt-10 pb-2 font-semibold">
+          <div className="flex justify-around border-b border-neutral-800/20 dark:border-neutral-300/20 mt-10 pb-2 font-semibold">
             <h3>H</h3>
             <h3>M</h3>
             <h3>S</h3>
           </div>
-          <div className="flex gap-2 w-full justify-around h-12 border-b border-neutral-800/20">
+          <div className="flex gap-2 w-full justify-around h-12 border-b border-neutral-800/20 dark:border-neutral-300/20">
             <input
               type="number"
               name="hours"
@@ -138,17 +146,24 @@ export default function Timer() {
 
         <div className="flex gap-12 mt-20">
           <Button onClick={handleRestart}>
-            <img src={Restart} alt="restart icon" className="size-3.5" />
+            <img src={RestartBlack} alt="restart icon" className="size-3.5 dark:hidden" />
+            <img src={RestartWhite} alt="restart icon" className="size-3.5 hidden dark:block" />
           </Button>
           <Button onClick={() => {if (secondsLeft > 0) toggleIsActive();}}>
             <img
-              src={isActive && secondsLeft > 0 ? Pause : Play}
+              src={isActive && secondsLeft > 0 ? PauseBlack : PlayBlack}
               alt="play/pause icon"
-              className="size-4"
+              className="size-4 dark:hidden"
+            />
+            <img
+              src={isActive && secondsLeft > 0 ? PauseWhite : PlayWhite}
+              alt="play/pause icon"
+              className="size-4 hidden dark:block"
             />
           </Button>
           <Button onClick={handleStop}>
-            <img src={Stop} alt="stop icon" className="size-4.5" />
+            <img src={StopWhite} alt="stop icon" className="size-3.5 hidden dark:block" />
+            <img src={StopBlack} alt="stop icon" className="size-4.5 dark:hidden" />
           </Button>
         </div>
       </div>

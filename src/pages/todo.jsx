@@ -1,7 +1,9 @@
 import { useRef, useState, useEffect } from 'react';
-import plusIcon from '../assets/plus.png';
+import plusIconDark from '../assets/plus-dark.png';
+import plusIconWhite from '../assets/plus.png';
 import ToDoItems from "../components/TodoItems";
 import { getTodos, saveTodos } from '../utils/localStorage';
+import ThemeToggle from "../components/theme";
 
 export default function ToDo() {
   let nextId = Date.now();
@@ -47,10 +49,14 @@ export default function ToDo() {
   }, []);
 
   return(
-    <div className='h-screen col-span-1 md:border-r md:border-gray-300 overflow-y-auto scrollbar-hide w-full flex px-2'>
+    <div className='h-screen col-span-1 md:border-r md:border-gray-300 dark:md:border-neutral-700 overflow-y-auto scrollbar-hide w-full flex px-2'>
       <div className="w-full">
-        <div className='sticky top-0 bg-white py-3'>
-          <h1 className="text-left text-2xl mt-3 font-semibold px-1">To-Do List</h1>
+        <div className='sticky top-0 bg-white dark:bg-black py-3'>
+          <div className="flex justify-between items-center mt-6">
+            <h1 className="text-left text-2xl font-semibold px-1">To-Do List</h1>
+            <span className='md:hidden'><ThemeToggle /></span>
+          </div>
+
           <form 
           action={addTodo}
           className="relative">
@@ -59,13 +65,19 @@ export default function ToDo() {
             type="text"
             placeholder="Add a Todo..."
             autoComplete="off"
-            className="w-full mt-3 bg-gray-200 rounded-lg px-3 py-3 focus:outline-none focus:ring-2 focus:ring-black transition-all duration-100 ease-in cursor-pointer" />
+            className="w-full mt-3 bg-gray-200 dark:bg-neutral-800 rounded-lg px-3 py-3 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-all duration-100 ease-in cursor-pointer" />
 
             <button>
               <img
-                src={plusIcon}
+                src={plusIconWhite}
                 alt="add to do"
-                className="size-3 absolute right-3 top-3/5 text-black -translate-y-1/2 cursor-pointer"
+                className="size-3 absolute right-3 top-3/5 text-black -translate-y-1/2 cursor-pointer dark:hidden"
+                />
+
+                <img
+                src={plusIconDark}
+                alt="add to do"
+                className="size-3 absolute right-3 top-3/5 text-black -translate-y-1/2 cursor-pointer hidden dark:block"
                 />
             </button>
           </form>
