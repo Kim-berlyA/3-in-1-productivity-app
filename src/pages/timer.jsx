@@ -99,7 +99,7 @@ export default function Timer() {
 
       <div className="h-[90%] w-full flex flex-col items-center @container">
         <div className="size-56 border-4 border-neutral-800 dark:border-neutral-300 rounded-full flex items-center justify-center shadow-lg dark:shadow-neutral-900 mt-[5cqh]">
-          <span className="text-4xl md:text-3xl text-neutral-800 dark:text-neutral-300">
+          <span className="text-4xl md:text-2xl lg:text-3xl text-neutral-800 dark:text-neutral-300">
             {timeLeft}
           </span>
         </div>

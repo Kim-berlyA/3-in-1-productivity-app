@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 export default function Notes() {
   const [notes, setNotes] = useState(getNotes);
   const [newNote, setNewNote] = useState("");
-  const [newTitle, setNewTitle] = useState("Title");
+  const [newTitle, setNewTitle] = useState("");
   const [showPopUp, setShowPopUp] = useState(false);
   const [editingId, setEditingId] = useState(null);
 
