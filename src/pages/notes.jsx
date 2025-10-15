@@ -71,7 +71,7 @@ export default function Notes() {
   }
 
   return (
-    <div className="h-[90vh] md:h-full flex flex-col col-span-1 md:col-span-1 px-2 @container">
+    <div className="h-[87vh] md:h-full flex flex-col col-span-1 md:col-span-1 px-2 @container">
       {showPopUp && <div className="absolute inset-0 bg-white/90 dark:bg-black/90 z-10 h-full w-full" onClick={() => setShowPopUp(false)}></div>}
 
       <div className="flex justify-between items-center mt-6">
