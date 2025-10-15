@@ -49,10 +49,10 @@ export default function ToDo() {
   }, []);
 
   return(
-    <div className='h-screen col-span-1 md:border-r md:border-gray-300 dark:md:border-neutral-700 overflow-y-auto scrollbar-hide w-full flex px-2'>
+    <div className='h-screen col-span-1 md:border-r md:border-gray-300 dark:md:border-neutral-700 w-full flex px-2'>
       <div className="w-full">
-        <div className='sticky top-0 bg-white dark:bg-black py-3'>
-          <div className="flex justify-between items-center mt-6">
+        <div className='bg-white dark:bg-black pb-3'>
+          <div className="sticky top-0 flex justify-between items-center mt-6">
             <h1 className="text-left text-2xl font-semibold px-1">To-Do List</h1>
             <span className='md:hidden'><ThemeToggle /></span>
           </div>
@@ -83,7 +83,7 @@ export default function ToDo() {
           </form>
         </div>
 
-        <ul className='pb-3 h-full'>
+        <ul className='h-[75%] overflow-y-auto scrollbar-hide'>
           {todos.map((item) =>  <ToDoItems key={item.id} text={item.text} id={item.id} isComplete={item.isComplete} deleteTodo={deleteTodo} toggleTodo={toggleTodo} /> )}
         </ul>
       </div>

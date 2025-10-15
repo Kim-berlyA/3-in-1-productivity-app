@@ -92,7 +92,7 @@ export default function Timer() {
 
   return (
     <div className="h-dvh flex flex-col">
-      <div className="flex justify-between items-center mt-6 w-full px-4">
+      <div className="flex justify-between items-center mt-6 w-full px-2">
         <h1 className="text-left text-2xl font-semibold px-1">Timer</h1>
         <span className='md:hidden'><ThemeToggle /></span>
       </div>

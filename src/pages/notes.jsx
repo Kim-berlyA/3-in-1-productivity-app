@@ -74,11 +74,11 @@ export default function Notes() {
       {showPopUp && <div className="absolute inset-0 bg-white/90 dark:bg-black/90 z-10 h-full w-full" onClick={() => setShowPopUp(false)}></div>}
 
       <div className="flex justify-between items-center mt-6">
-        <h1 className="text-left text-2xl font-semibold px-1">Notes</h1>
+        <h1 className="sticky top-0 text-left text-2xl font-semibold px-1">Notes</h1>
         <ThemeToggle />
       </div>
 
-      <div className="flex flex-col gap-1 flex-wrap mt-3">
+      <div className="flex flex-col gap-1 mt-3 overflow-y-scroll">
         {notes.map((item) =>  <Note key={item.id} title={item.title} text={item.text} id={item.id} deleteNote={deleteNote} handleEdit={() => handleEdit(item)}>
           <h2 className="text-semibold mb-0.5">{item.title}</h2>
           <p className="text-xs line-clamp-1 text-neutral-700 dark:text-neutral-400 pr-3 mb-2">{item.text}</p>
