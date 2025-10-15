@@ -24,6 +24,16 @@ export default function Notes() {
     saveNotes(notes);
   }, [notes])
 
+  const currentDate = new Date().toLocaleString('en-US', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    }
+  );
+
   function handleSave() {
     if (!newTitle || !newNote.trim()) return;
 
@@ -36,6 +46,7 @@ export default function Notes() {
     } else {
       const newEntry = {
         id: Date.now(),
+        date: currentDate,
         title: newTitle,
         text: newNote,
       };
@@ -59,18 +70,8 @@ export default function Notes() {
     setShowPopUp(true);
   }
 
-  const currentDate = new Date().toLocaleString('en-US', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    }
-  );
-
   return (
-    <div className="h-[90vh] md:h-full flex flex-col col-span-1 md:col-span-1 px-2 relative">
+    <div className="h-[90vh] md:h-full flex flex-col col-span-1 md:col-span-1 px-2 @container">
       {showPopUp && <div className="absolute inset-0 bg-white/90 dark:bg-black/90 z-10 h-full w-full" onClick={() => setShowPopUp(false)}></div>}
 
       <div className="flex justify-between items-center mt-6">
@@ -78,18 +79,18 @@ export default function Notes() {
         <ThemeToggle />
       </div>
 
-      <div className="flex flex-col gap-1 mt-3 overflow-y-scroll">
+      <div className="flex flex-col gap-1 mt-3 h-[85cqh] [@media_(min-height:800px)_and_(max-height:900px)]:h-[88cqh] [@media_(min-height:901px)_and_(max-height:1000px)]:h-[90cqh] [@media_(min-height:1001px)]:h-[100cqh] overflow-y-auto scrollbar">
         {notes.map((item) =>  <Note key={item.id} title={item.title} text={item.text} id={item.id} deleteNote={deleteNote} handleEdit={() => handleEdit(item)}>
           <h2 className="text-semibold mb-0.5">{item.title}</h2>
           <p className="text-xs line-clamp-1 text-neutral-700 dark:text-neutral-400 pr-3 mb-2">{item.text}</p>
-          <p className="text-[10px] text-neutral-600 dark:text-neutral-400">{currentDate}</p>
+          <p className="text-[10px] text-neutral-600 dark:text-neutral-400">{item.date}</p>
         </Note> )}
       </div>
 
-      <button className="absolute bottom-5 right-5 rounded-full cursor-pointer flex justify-center items-center shadow-lg size-12 bg-neutral-900/20 dark:bg-neutral-100/20"
+      <button className="absolute bottom-5 right-5 rounded-full cursor-pointer flex justify-center items-center shadow-lg size-12 bg-neutral-900 dark:bg-neutral-300"
       onClick={() => setShowPopUp(true)}>
-        <img src={AddBlack} alt="add icon" className="size-4 dark:hidden" />
-        <img src={AddWhite} alt="add icon" className="size-4 hidden dark:block" />
+        <img src={AddWhite} alt="add icon" className="size-5 dark:hidden" />
+        <img src={AddBlack} alt="add icon" className="size-5 hidden dark:block" />
       </button>
 
       {showPopUp && <div className="absolute z-40 top-[40%] left-[50%] -translate-[50%] bg-gray-300 dark:bg-neutral-800 size-80 rounded-md p-3">

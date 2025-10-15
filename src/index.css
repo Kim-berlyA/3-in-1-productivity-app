@@ -7,14 +7,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
 
 .no-spin::-webkit-inner-spin-button,
 .no-spin::-webkit-outer-spin-button {
@@ -24,3 +16,22 @@
 .no-spin {
   -moz-appearance: textfield;
 }
+
+.scrollbar {
+    scrollbar-width: thin;
+    margin-right: -0.4rem;
+    padding-right: 0.3rem;
+    scrollbar-color: #555 transparent;
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    width: 8px;
+    margin-right: -0.4rem;
+    padding-right: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  }

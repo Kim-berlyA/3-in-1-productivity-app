@@ -49,7 +49,7 @@ export default function ToDo() {
   }, []);
 
   return(
-    <div className='h-screen col-span-1 md:border-r md:border-gray-300 dark:md:border-neutral-700 w-full flex px-2'>
+    <div className='h-screen col-span-1 md:border-r md:border-gray-300 dark:md:border-neutral-700 w-full flex px-2 @container'>
       <div className="w-full">
         <div className='bg-white dark:bg-black pb-3'>
           <div className="sticky top-0 flex justify-between items-center mt-6">
@@ -83,7 +83,7 @@ export default function ToDo() {
           </form>
         </div>
 
-        <ul className='h-[75%] overflow-y-auto scrollbar-hide'>
+        <ul className='h-[68cqh] [@media_(min-height:800px)_and_(max-height:900px)]:h-[75cqh] [@media_(min-height:901px)_and_(max-height:1000px)]:h-[78cqh] [@media_(min-height:1001px)]:h-[80cqh] overflow-y-auto scrollbar'>
           {todos.map((item) =>  <ToDoItems key={item.id} text={item.text} id={item.id} isComplete={item.isComplete} deleteTodo={deleteTodo} toggleTodo={toggleTodo} /> )}
         </ul>
       </div>
