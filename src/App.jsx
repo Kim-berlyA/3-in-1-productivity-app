@@ -13,7 +13,7 @@ export default function App() {
       <div className="hidden md:block">
         <ToDo />
       </div>
-      <div className="hidden md:block md:border-r md:border-gray-300">
+      <div className="hidden md:block md:border-r md:border-gray-300 dark:md:border-neutral-700">
         <Timer />
       </div>
       <div className="hidden md:block h-full">
