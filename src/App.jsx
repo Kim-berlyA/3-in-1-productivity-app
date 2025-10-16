@@ -2,6 +2,7 @@ import ToDo from './pages/todo';
 import Timer from './pages/timer';
 import Notes from './pages/notes';
 import NavBar from './components/navbar';
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
   return (
@@ -19,6 +20,8 @@ export default function App() {
       <div className="hidden md:block h-full">
         <Notes />
       </div>
+      
+      <Analytics />
     </div>
   )
 } 
